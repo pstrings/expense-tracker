@@ -30,6 +30,7 @@ const ExpenseForm = (props) => {
   };
 
   const dateChangeHandler = (event) => {
+    // Function form of change state function
     setUserInput((prevState) => {
       return { ...prevState, enteredDate: event.target.value };
     });
@@ -46,10 +47,10 @@ const ExpenseForm = (props) => {
     };
 
     setUserInput({
-        enteredTitle : "",
-        enteredAmount : "", 
-        enteredDate : ""
-    }) 
+      enteredTitle: "",
+      enteredAmount: "",
+      enteredDate: "",
+    });
 
     // Here onSaveExpenseData is the pointer to the saveExpenseDataHandler function
     props.onSaveExpenseData(expenseData);
@@ -61,9 +62,9 @@ const ExpenseForm = (props) => {
         <div className="new-expense__control">
           <label>Title</label>
           {/* 
-                        On change event listener listen for each key stroke but also every type of input
-                        whether text or date or whatever
-                    */}
+            On change event listener listen for each key stroke but also every type of input
+            whether text or date or whatever
+          */}
           <input
             type="text"
             value={userInput.enteredTitle}

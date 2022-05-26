@@ -16,27 +16,28 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        <ExpenseFilter selectYear = {selectedYear} onselectFilter = {selectFilter} />
-        <ExpenseItems
-          title={props.expenses[0].title}
-          amount={props.expenses[0].amount}
-          date={props.expenses[0].date}
+        <ExpenseFilter
+          selectYear={selectedYear}
+          onselectFilter={selectFilter}
         />
-        <ExpenseItems
-          title={props.expenses[1].title}
-          amount={props.expenses[1].amount}
-          date={props.expenses[1].date}
-        />
-        <ExpenseItems
-          title={props.expenses[2].title}
-          amount={props.expenses[2].amount}
-          date={props.expenses[2].date}
-        />
-        <ExpenseItems
-          title={props.expenses[3].title}
-          amount={props.expenses[3].amount}
-          date={props.expenses[3].date}
-        />
+        {/* 
+          Map is going to iterate over the entire expenses array and return each ExpenseItems.
+          () => {} explicit returning, we must use the return keyword to return something
+          () =>  () implicit return, everything inside the braces will be returned
+        */}
+        {props.expenses.map((expense) => (
+          <ExpenseItems
+            // a unique key is added cuz it makes each list item unique
+            // otherwise react will think they are same and update the entire array and move then one step
+            // dow to make room at top, which is not efficient
+
+            // this key={expense.id} can be used as it is and mapped object.id will always be unique.
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
       </Card>
     </div>
   );
