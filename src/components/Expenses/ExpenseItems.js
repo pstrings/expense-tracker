@@ -16,7 +16,6 @@ const ExpenseItems = (props) => {
 
   const clickHandler = () => {
     setTitle(title)
-    console.log(title)
   }
   
   

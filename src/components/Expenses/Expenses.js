@@ -9,6 +9,13 @@ import React from "react";
 const Expenses = (props) => {
   const [selectedYear, setSelectedYear] = useState("2022");
 
+
+  // We take the array and filter it 
+  // getFullYear can be used to take year from the date object
+  const filterExpenses = props.expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === selectedYear;
+  });
+
   const selectFilter = (year) => {
     setSelectedYear(year);
   };
@@ -25,7 +32,7 @@ const Expenses = (props) => {
           () => {} explicit returning, we must use the return keyword to return something
           () =>  () implicit return, everything inside the braces will be returned
         */}
-        {props.expenses.map((expense) => (
+        {filterExpenses.map((expense) => (
           <ExpenseItems
             // a unique key is added cuz it makes each list item unique
             // otherwise react will think they are same and update the entire array and move then one step
