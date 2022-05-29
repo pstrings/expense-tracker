@@ -1,28 +1,26 @@
-import './ExpenseItems.css'
-import Card from '../UI/Card'
-import ExpenseDate from './ExpenseDate'
+import "./ExpenseItems.css";
+import Card from "../UI/Card";
+import ExpenseDate from "./ExpenseDate";
 // Importing useState, which is a react hook, from react component
-import { useState } from 'react'
+import { useState } from "react";
 
 const ExpenseItems = (props) => {
-
-  // This useState takes a value as an argument and returns an Array 
+  // This useState takes a value as an argument and returns an Array
   // (first value being the value and the second being the function to change the value)
   // Here we are using destructuring to store those two values in separate variables
 
   // We are using const here because we are not using assignment operator
   // We are using a function to change value and it's being managed somewhere else in some other variable
-  const [title, setTitle] = useState(props.title)
+  const [title, setTitle] = useState(props.title);
 
   const clickHandler = () => {
-    setTitle(title)
-  }
-  
-  
+    setTitle(title);
+  };
+
   // let title = props.title
 
   // const clickHandler = () => {
-  //   // This won't update the title, because React goes through all the components one by one 
+  //   // This won't update the title, because React goes through all the components one by one
   //   // But it only goes through them once at the time they are loaded
   //   // So later on when the button is clicked it doesn't re-evaluate the changes
   //   // To overcome this, we use state.
@@ -32,26 +30,25 @@ const ExpenseItems = (props) => {
   // }
 
   return (
-    <Card className="expense-item">
+    <li>
+      <Card className="expense-item">
         <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
-      </div>
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
 
-      {/* 
+        {/* 
           Here we don't call function with (), we just point to it.
           Because if we call it, then it'll be called at the time the JSX is returned b4 button is clicked
       */}
-      <button onClick={clickHandler}>Click</button>
-    </Card>
-  )
-}
+        <button onClick={clickHandler}>Click</button>
+      </Card>
+    </li>
+  );
+};
 
-export default ExpenseItems
-
-
-
+export default ExpenseItems;
 
 /* 
   ====================================================================================================
